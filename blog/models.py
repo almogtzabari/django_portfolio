@@ -5,7 +5,15 @@ class Blog(models.Model):
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField()
     image = models.ImageField(upload_to='images/')
-    body = models.TextField(max_length=1000)
+    body = models.TextField(max_length=10000)
 
+    def __str__(self):
+        return self.title
+
+    def summary(self):
+        return self.body[:100]
+
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%A %d/%m/%Y')
 
 

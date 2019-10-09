@@ -7,13 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Almog Tzabari</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
     <style>
@@ -49,7 +48,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                 </li>
             </ul>
@@ -58,36 +57,15 @@
 </header>
 
 <main role="main">
+    <div class="container">
+        <h1 class="text-center pt-3">{{ blog.title }}</h1>
+        <br>
+        <p class="text-center">{{ blog.pub_date_pretty }}</p>
+        <img class="img-fluid mx-auto" src="{{ blog.image.url }}">
+        <br><br>
+        <p>{{ blog.body }}</p>
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Hi, I'm Almog</h1>
-            <p class="lead text-muted">My name is Almog Tzabari and I love to program!</p>
-            <p>
-                <a href="mailto:aalmog23@gmail.com" class="btn btn-primary my-2">Email Me</a>
-            </p>
-            <img src="{% static 'me.jpg' %}" height="300">
-        </div>
-    </section>
-    <div class="album py-5 bg-light">
-        <div class="container">
-    <h1 class="text-center">Latest Work</h1><br>
-            <div class="row">
-                {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}" width="100%" height="225"/>
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-            </div>
-        </div>
     </div>
-
 </main>
 
 <footer class="text-muted">
